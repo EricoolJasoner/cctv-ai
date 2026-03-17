@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>央视总台AI战略全景解读</title>
+    <meta property="og:title" content="央视总台AI战略全景解读">
+    <meta property="og:description" content="技术局副局长赵贵华详解5G+4K/8K+AI战略格局">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue','Microsoft YaHei',sans-serif;
+            background:#f0f2f5;
+            -webkit-font-smoothing:antialiased;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .container{
+            max-width:420px;margin:0 auto;background:#fff;
+            min-height:100vh;position:relative;overflow-x:hidden;
+            padding-bottom:90px;
+        }
+
+        /* ===== Hero ===== */
+        .header{
+            background:linear-gradient(160deg,#0a1628 0%,#1a3a6a 35%,#2563eb 70%,#0ea5e9 100%);
+            color:#fff;padding:52px 26px 68px;position:relative;overflow:hidden;
+        }
+        .header::after{
+            content:'';position:absolute;bottom:-2px;left:-5%;right:-5%;
+            height:44px;background:#fff;border-radius:50% 50% 0 0;
+        }
+        .h-grid{
+            position:absolute;inset:0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+            background-size:40px 40px;pointer-events:none;
+        }
+        .h-orb{position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+        .h-orb1{width:120px;height:120px;background:rgba(6,182,212,.3);top:20px;right:30px}
+        .h-orb2{width:80px;height:80px;background:rgba(139,92,246,.25);bottom:60px;left:15px}
+
+        .src-tag{
+            display:inline-flex;align-items:center;gap:6px;
+            background:rgba(255,255,255,.12);padding:6px 14px;border-radius:24px;
+            font-size:12px;margin-bottom:18px;
+            backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,.15);position:relative;z-index:1;
+        }
+        .src-tag::before{
+            content:'';width:6px;height:6px;background:#34d399;border-radius:50%;
+            animation:pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+        .header h1{
+            font-size:27px;font-weight:800;line-height:1.35;
+            margin-bottom:12px;letter-spacing:-.01em;position:relative;z-index:1;
+        }
+        .header .sub{
+            font-size:13.5px;font-weight:300;opacity:.85;line-height:1.7;position:relative;z-index:1;
+        }
+
+        /* ===== 数据卡片 ===== */
+        .stats{
+            display:flex;justify-content:space-around;
+            margin:-30px 18px 34px;background:#fff;border-radius:18px;
+            padding:22px 14px;position:relative;z-index:10;
+            box-shadow:0 4px 6px rgba(0,0,0,.04),0 10px 24px rgba(0,0,0,.08);
+        }
+        .st{text-align:center;flex:1}
+        .st+.st{border-left:1px solid #f1f5f9}
+        .st-n{
+            font-size:30px;font-weight:900;display:block;line-height:1;margin-bottom:5px;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .st-l{font-size:11.5px;color:#94a3b8;font-weight:500;letter-spacing:.03em}
+
+        /* ===== 通用 ===== */
+        .ct{padding:0 20px}
+        .sec{margin-bottom:38px}
+        .sec-t{
+            font-size:18px;font-weight:700;color:#0f172a;margin-bottom:16px;
+            display:flex;align-items:center;gap:9px;
+        }
+        .sec-ico{
+            width:30px;height:30px;border-radius:9px;display:flex;
+            align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+        }
+        .ic-b{background:#eff6ff}.ic-p{background:#f5f3ff}
+        .ic-g{background:#ecfdf5}.ic-a{background:#fffbeb}
+
+        /* 强调框 */
+        .hl-box{
+            background:linear-gradient(135deg,#f0f7ff,#e8f0fe);
+            border-left:4px solid #2563eb;padding:18px;
+            border-radius:0 14px 14px 0;font-size:14.5px;
+            color:#1e3a5f;line-height:1.85;
+        }
+        .hl-box strong{font-weight:700}
+        .c-b{color:#2563eb}.c-p{color:#7c3aed}.c-r{color:#dc2626}
+
+        /* 场景卡片 */
+        .sg{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+        .sc{
+            background:#fff;border:1px solid #f1f5f9;border-radius:16px;
+            padding:20px 14px 16px;text-align:center;
+            transition:all .25s ease;position:relative;overflow:hidden;
+        }
+        .sc::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,#3b82f6,#8b5cf6);opacity:0;transition:opacity .3s;
+        }
+        .sc:active{transform:scale(.96)}
+        .sc:active::before{opacity:1}
+        .sc-i{font-size:36px;margin-bottom:10px;display:block}
+        .sc-t{font-size:14.5px;font-weight:700;color:#0f172a;margin-bottom:5px}
+        .sc-d{font-size:11.5px;color:#64748b;line-height:1.5}
+        .badge{
+            display:inline-block;padding:3px 9px;
+            background:rgba(59,130,246,.08);color:#3b82f6;
+            border-radius:20px;font-size:10.5px;font-weight:600;
+            margin-top:8px;border:1px solid rgba(59,130,246,.12);
+        }
+
+        /* 分隔线 */
+        .dv{text-align:center;margin:40px 0;position:relative}
+        .dv::before{
+            content:'';position:absolute;top:50%;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,transparent,#e2e8f0 30%,#e2e8f0 70%,transparent);
+        }
+        .dv span{
+            background:#fff;padding:0 18px;color:#64748b;
+            font-size:13.5px;font-weight:600;position:relative;letter-spacing:.04em;
+        }
+
+        /* 时间轴 */
+        .tl{position:relative;padding-left:34px}
+        .tl::before{
+            content:'';position:absolute;left:9px;top:10px;bottom:10px;width:2px;
+            background:linear-gradient(180deg,#3b82f6,#8b5cf6,#06b6d4);border-radius:2px;
+        }
+        .tl-i{position:relative;margin-bottom:26px;
+            opacity:0;transform:translateX(-10px);animation:sIn .5s ease forwards;
+        }
+        .tl-i:nth-child(1){animation-delay:.15s}
+        .tl-i:nth-child(2){animation-delay:.25s}
+        .tl-i:nth-child(3){animation-delay:.35s}
+        .tl-i:nth-child(4){animation-delay:.45s}
+        .tl-i:nth-child(5){animation-delay:.55s}
+        @keyframes sIn{to{opacity:1;transform:translateX(0)}}
+        .tl-i:last-child{margin-bottom:0}
+        .tl-d{
+            position:absolute;left:-29px;top:3px;width:15px;height:15px;
+            background:#fff;border:3px solid #3b82f6;border-radius:50%;
+            box-shadow:0 0 0 4px rgba(59,130,246,.12);
+        }
+        .tl-c h4{font-size:14.5px;color:#0f172a;margin-bottom:3px;font-weight:700}
+        .tl-c p{font-size:12.5px;color:#64748b;line-height:1.6}
+
+        /* 生态 */
+        .ec{
+            background:#fafbfc;border-radius:18px;
+            padding:6px 18px;border:1px solid #f1f5f9;
+        }
+        .ei{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid #f1f5f9}
+        .ei:last-child{border-bottom:none}
+        .ei-i{
+            font-size:19px;margin-right:12px;flex-shrink:0;
+            width:42px;height:42px;background:#fff;border-radius:11px;
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 2px 6px rgba(0,0,0,.04);
+        }
+        .ei-t h4{font-size:14.5px;color:#0f172a;margin-bottom:2px;font-weight:700}
+        .ei-t p{font-size:12.5px;color:#64748b;line-height:1.5}
+
+        /* 底部 */
+        .ftr{
+            text-align:center;padding:44px 22px 20px;
+            color:#94a3b8;font-size:11.5px;line-height:2;
+        }
+        .ftr .org{font-size:13px;color:#64748b;font-weight:600}
+        .ftr-line{
+            width:36px;height:2px;margin:14px auto;border-radius:2px;
+            background:linear-gradient(90deg,#3b82f6,#8b5cf6);
+        }
+
+        /* 操作栏 */
+        .bar{
+            position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+            width:100%;max-width:420px;
+            background:rgba(255,255,255,.92);
+            backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+            padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));
+            box-shadow:0 -2px 16px rgba(0,0,0,.06);
+            display:flex;gap:10px;border-top:1px solid rgba(0,0,0,.04);z-index:100;
+        }
+        .btn{
+            flex:1;padding:12px;border:none;border-radius:11px;
+            font-size:14.5px;font-weight:600;cursor:pointer;
+            text-align:center;font-family:inherit;
+            display:flex;align-items:center;justify-content:center;gap:5px;
+            transition:all .2s;
+        }
+        .btn-p{
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;
+            box-shadow:0 4px 12px rgba(37,99,235,.35);
+        }
+        .btn-p:active{transform:translateY(1px);box-shadow:0 2px 6px rgba(37,99,235,.3)}
+        .btn-d{background:#f1f5f9;color:#475569}
+        .btn-d:active{background:#e2e8f0}
+
+        /* 渐入 */
+        .fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+        .fu.v{opacity:1;transform:translateY(0)}
+
+        /* Toast */
+        .toast{
+            position:fixed;top:50%;left:50%;
+            transform:translate(-50%,-50%) scale(.9);
+            background:rgba(0,0,0,.75);color:#fff;
+            padding:13px 26px;border-radius:11px;font-size:14px;
+            z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;
+            backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+        }
+        .toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="h-grid"></div>
+        <div class="h-orb h-orb1"></div>
+        <div class="h-orb h-orb2"></div>
+        <div class="src-tag">《广播电视网络》2026年第2期</div>
+        <h1>中央广播电视总台<br>AI战略全景解读</h1>
+        <div class="sub">技术局副局长赵贵华详解「5G+4K/8K+AI」战略格局<br>探索人工智能在媒体领域的创新应用</div>
+    </div>
+
+    <div class="stats">
+        <div class="st"><span class="st-n" data-t="90" data-s="+">0</span><div class="st-l">智媒体应用</div></div>
+        <div class="st"><span class="st-n" data-t="30" data-s="+">0</span><div class="st-l">支撑节目</div></div>
+        <div class="st"><span class="st-n" data-t="7" data-s="">0</span><div class="st-l">生产流程</div></div>
+    </div>
+
+    <div class="ct">
+        <div class="sec fu">
+            <div class="sec-t"><div class="sec-ico ic-b">🎯</div>核心战略定位</div>
+            <div class="hl-box">
+                将<strong class="c-b">新质生产力</strong>转化为<strong class="c-p">新质传播力</strong>和<strong class="c-r">媒体引领力</strong><br>
+                实现从数字化、网络化向<strong>智能化</strong>跨越发展
+            </div>
+        </div>
+
+        <div class="sec fu">
+            <div class="sec-t"><div class="sec-ico ic-p">🎬</div>五大典型应用场景</div>
+            <div class="sg">
+                <div class="sc"><span class="sc-i">📝</span><div class="sc-t">智能节目创作</div><div class="sc-d">提示→文稿→脚本→拍摄→编辑→成片全流程</div><span class="badge">端到端</span></div>
+                <div class="sc"><span class="sc-i">🎵</span><div class="sc-t">短视频生成</div><div class="sc-d">文案自动转视频，智能匹配素材字幕音乐</div><span class="badge">一键生成</span></div>
+                <div class="sc"><span class="sc-i">👤</span><div class="sc-t">AI数字人</div><div class="sc-d">主持、播报、手语、虚拟演播多场景应用</div><span class="badge">多模态</span></div>
+                <div class="sc"><span class="sc-i">🎨</span><div class="sc-t">AIGC动画</div><div class="sc-d">2D到3D映射，生成内容更平滑稳定</div><span class="badge">2D→3D</span></div>
+                <div class="sc"><span class="sc-i">🎭</span><div class="sc-t">AI换脸</div><div class="sc-d">超分+4D数据技术，影视级商用方案</div><span class="badge">4D渲染</span></div>
+                <div class="sc"><span class="sc-i">🌐</span><div class="sc-t">文商旅体</div><div class="sc-d">文旅、体育、具身智能跨界融合</div><span class="badge">跨界</span></div>
+            </div>
+        </div>
+
+        <div class="dv"><span>央视听媒体大模型 2.0</span></div>
+
+        <div class="sec fu">
+            <div class="sec-t"><div class="sec-ico ic-g">🏗️</div>五层技术架构</div>
+            <div class="tl">
+                <div class="tl-i"><div class="tl-d"></div><div class="tl-c"><h4>基础资源支撑平台</h4><p>算力资源整合，安全保障底座</p></div></div>
+                <div class="tl-i"><div class="tl-d"></div><div class="tl-c"><h4>多模态数据供给平台</h4><p>高质量语料治理与供给体系</p></div></div>
+                <div class="tl-i"><div class="tl-d"></div><div class="tl-c"><h4>大模型研发平台</h4><p>新闻、体育、综艺等垂类模型训练</p></div></div>
+                <div class="tl-i"><div class="tl-d"></div><div class="tl-c"><h4>大模型管理平台</h4><p>全生命周期管理与性能监控</p></div></div>
+                <div class="tl-i"><div class="tl-d"></div><div class="tl-c"><h4>应用平台（90+应用）</h4><p>覆盖策、采、编、审、播、存、管全流程</p></div></div>
+            </div>
+        </div>
+
+        <div class="sec fu">
+            <div class="sec-t"><div class="sec-ico ic-a">🌱</div>生态建设六大重点</div>
+            <div class="ec">
+                <div class="ei"><div class="ei-i">⚡</div><div class="ei-t"><h4>整合智算资源</h4><p>重构媒体生态，增强AI原始创新能力</p></div></div>
+                <div class="ei"><div class="ei-i">📊</div><div class="ei-t"><h4>发挥语料优势</h4><p>降低训练成本，减少重复投资</p></div></div>
+                <div class="ei"><div class="ei-i">🔒</div><div class="ei-t"><h4>确保数据安全</h4><p>加密认证技术，防范泄露风险</p></div></div>
+                <div class="ei"><div class="ei-i">🎯</div><div class="ei-t"><h4>聚焦媒体场景</h4><p>打造自主可控的行业应用生态</p></div></div>
+                <div class="ei"><div class="ei-i">⚖️</div><div class="ei-t"><h4>完善负面监管</h4><p>建立伦理审查与风险评估机制</p></div></div>
+                <div class="ei"><div class="ei-i">🤝</div><div class="ei-t"><h4>坚持开放合作</h4><p>产学研共创共建共享</p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ftr">
+        <div class="ftr-line"></div>
+        <div class="org">中央广播电视总台技术局</div>
+        <div>详细内容见《广播电视网络》2026年第2期</div>
+    </div>
+
+    <div class="bar">
+        <button class="btn btn-d" onclick="copyUrl()">📋 复制链接</button>
+        <button class="btn btn-p" onclick="shareAction()">📤 分享给同事</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+!function(){
+    // 数字动画
+    document.querySelectorAll('.st-n').forEach(function(n){
+        var t=parseInt(n.dataset.t),s=n.dataset.s||'',c=0,step=t/25;
+        var ti=setInterval(function(){
+            c+=step;
+            if(c>=t){n.textContent=t+s;clearInterval(ti)}
+            else n.textContent=Math.floor(c)+s;
+        },45);
+    });
+
+    // 滚动渐入
+    var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}
+        });
+    },{threshold:.12});
+    document.querySelectorAll('.fu').forEach(function(el){obs.observe(el)});
+}();
+
+function showToast(m){
+    var t=document.getElementById('toast');
+    t.textContent=m;t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show')},2000);
+}
+function copyUrl(){
+    try{
+        var i=document.createElement('textarea');
+        i.value=location.href;i.style.position='fixed';i.style.opacity='0';
+        document.body.appendChild(i);i.select();
+        document.execCommand('copy');document.body.removeChild(i);
+        showToast('链接已复制');
+    }catch(e){showToast('请长按复制链接')}
+}
+function shareAction(){
+    if(navigator.share)navigator.share({title:'央视总台AI战略解读',text:'技术局副局长赵贵华详解人工智能+广电视听',url:location.href});
+    else showToast('请点击右上角 ··· 分享到微信');
+}
+</script>
+</body>
+</html>
